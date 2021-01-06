@@ -3,22 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { createStore } from 'redux';
+// import { Provider } from 'react-redux'; 
 import Home from './components/Home';
-import Book from './components/books/CreateBook';
-import Author from './components/authors/CreateAuthor';
+import CreateBook from './components/books/CreateBook';
+import CreateAuthor from './components/authors/CreateAuthor';
 import Navbar from './components/Navbar';
+
+// const store = createStore('AnyReducer Function')
 
 
 ReactDOM.render(
-  <React.StrictMode>
+ <React.StrictMode>
+     {/* <Provider store={store}> */}
     <Router>
       <div>
         <Navbar />
         <Route exact path="/" component={Home} />
-        <Route exact path="/books" component={Book} />
-        <Route exact path="/authors" component={Author} />
+        <Route exact path="/books/new" component={CreateBook} />
+        <Route exact path="/authors/new" component={CreateAuthor} />
         </div>
     </Router>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
