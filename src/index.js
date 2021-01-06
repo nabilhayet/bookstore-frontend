@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Book from './components/books/CreateBook';
+import Author from './components/authors/CreateAuthor';
+import Navbar from './components/Navbar';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <div>
+        <Navbar />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/books" component={Book} />
+        <Route exact path="/authors" component={Author} />
+        </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
