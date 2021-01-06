@@ -1,10 +1,33 @@
-// src/Book.js
-import React from 'react';
+// ./src/components/books/CreateBook.js
  
-class Book extends React.Component {
+import React, { Component } from 'react'
+ 
+class CreateBook extends Component {
   render() {
-    return <h1>This is my Book component!</h1>;
+    return(
+      <div>
+        <form>
+          <p>
+            <label>Title</label>
+            <input type="text" />
+          </p>
+          <p>
+            <label>Pages</label>
+            <input type="number" />
+          </p>
+          <p>
+            <label>Chapters</label>
+            <input type="number" />
+          </p>
+          <p>
+            <label>Author</label>
+            <input type="number" />
+          </p>
+          <input type="submit" />
+        </form>
+      </div>
+    );
   }
-}
+};
  
-export default Book;
+export default CreateBook;
