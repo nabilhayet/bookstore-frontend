@@ -32,11 +32,10 @@ class CreateBook extends Component {
 }
 
 handleChange =(event) => {
-  console.log(event)
+  debugger 
 }
  
   render() {
-    console.log(this.state)
     return(
       <div>
         <form>
@@ -54,7 +53,7 @@ handleChange =(event) => {
           </p>
           <p>
             <label>Author</label>
-            <select onChange={this.handleChange}>
+            <select value="" onChange={this.handleChange}>
               {this.addDropDownMenu()}
             </select>
           </p>
