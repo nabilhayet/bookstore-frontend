@@ -7,7 +7,6 @@ class ShowAuthor extends Component {
     }
 
     render() {
-        console.log(this.props)
         return(
             2
         )

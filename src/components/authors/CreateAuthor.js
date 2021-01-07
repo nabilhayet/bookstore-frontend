@@ -1,7 +1,7 @@
 // ./src/components/authors/CreateAuthor.js
 import React, { Component } from 'react'
 import ShowAuthor from './ShowAuthor'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
  
 class CreateAuthor extends Component {
 
@@ -41,7 +41,7 @@ class CreateAuthor extends Component {
     fetch('http://localhost:3000/authors',configobj)
     .then(response => response.json())
     .then(author => { 
-      <Redirect to="/authors/author.id" />
+      <Redirect to={`/authors/${author.id}`}/>
 
     })
   }
