@@ -9,6 +9,8 @@ import Home from './components/Home';
 import CreateBook from './components/books/CreateBook';
 import CreateAuthor from './components/authors/CreateAuthor';
 import Navbar from './components/Navbar';
+import ShowAuthor from './components/authors/ShowAuthor'
+import IndexAuthor from './components/authors/IndexAuthor'
 
 // const store = createStore('AnyReducer Function')
 
@@ -22,6 +24,8 @@ ReactDOM.render(
         <Route exact path="/" component={Home} />
         <Route exact path="/books/new" component={CreateBook} />
         <Route exact path="/authors/new" component={CreateAuthor} />
+        <Route exact path="/authors" component={IndexAuthor} />
+        <Route exact path="/authors/:id" component={ShowAuthor} />
         </div>
     </Router>
     {/* </Provider> */}

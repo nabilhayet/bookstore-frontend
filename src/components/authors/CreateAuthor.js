@@ -1,30 +1,7 @@
 // ./src/components/authors/CreateAuthor.js
-
-// componentDidMount() {
-//   // Simple POST request with a JSON body using fetch
-//   const requestOptions = {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ title: 'React POST Request Example' })
-//   };
-//   fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-//       .then(response => response.json())
-//       .then(data => this.setState({ postId: data.id }));
-// }
-
-// const configobj = {
-//   method: 'POST',
-//   body: JSON.stringify(kingdom),
-//   headers: {
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json'
-//   }
-// }
-
-// fetch(BASE_URL + '/kingdoms', configobj)
-// .then(response => response.json())
- 
 import React, { Component } from 'react'
+import ShowAuthor from './ShowAuthor'
+import { Redirect } from 'react-router'
  
 class CreateAuthor extends Component {
 
@@ -48,7 +25,7 @@ class CreateAuthor extends Component {
 
   handleSubmit =(event) => {
     event.preventDefault()
-    const author = {firstname: this.state.firstname, lastname: this.state.lastname, age: this.state.age, contact: this.state.contact}
+    const author = {first_name: this.state.firstname, last_name: this.state.lastname, age: this.state.age, contact: this.state.contact}
     this.createNewAuthor(author)
   }
 
@@ -61,11 +38,11 @@ class CreateAuthor extends Component {
           'Accept': 'application/json'
       }
     }
-    debugger
     fetch('http://localhost:3000/authors',configobj)
     .then(response => response.json())
     .then(author => { 
-    debugger
+      <Redirect to="/authors/author.id" />
+
     })
   }
 

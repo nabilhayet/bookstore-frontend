@@ -15,8 +15,9 @@ class Navbar extends React.Component {
     return (
       <div>
         <NavLink to="/" exact style={link} activeStyle={{ background: 'darkblue'}}>Home</NavLink>
-        <NavLink to="/books/new" exact style={link} activeStyle={{ background: 'darkblue'}}>Book</NavLink>
-        <NavLink to="/authors/new" exact style={link} activeStyle={{ background: 'darkblue'}}>Author</NavLink>
+        <NavLink to="/books/new" exact style={link} activeStyle={{ background: 'darkblue'}}>ADD Book</NavLink>
+        <NavLink to="/authors/new" exact style={link} activeStyle={{ background: 'darkblue'}}> ADD Author</NavLink>
+        <NavLink to="/authors" exact style={link} activeStyle={{ background: 'darkblue'}}>VIEW Authors</NavLink>
       </div>
     )
   }
