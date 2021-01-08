@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import ShowAuthor from './ShowAuthor'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import addAuthor from '../../actions/authors'
  
 class CreateAuthor extends Component {
 
@@ -41,9 +43,9 @@ class CreateAuthor extends Component {
     fetch('http://localhost:3000/authors',configobj)
     .then(response => response.json())
     .then(author => { 
-      <Redirect to={`/authors/${author.id}`}/>
-
+      this.props.addAuthor(author)
     })
+    // <Redirect to={`/authors/${author.id}`}/>
   }
 
   render() {
@@ -76,5 +78,12 @@ class CreateAuthor extends Component {
     );
   }
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+      addAuthor: (author) => { dispatch(addAuthor(author)) }
+    }
+}
+
  
-export default CreateAuthor;
+export default connect(null, mapDispatchToProps)(CreateAuthor);

@@ -2,11 +2,8 @@ import React, { Component } from 'react'
  
 class ShowAuthor extends Component {
 
-    constructor(props){
-        super(props)
-    }
-
     render() {
+        const id = this.props.match.params.id
         return(
             2
         )
