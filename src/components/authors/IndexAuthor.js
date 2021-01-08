@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import addAuthors from '../actions/addAuthor'
+import getAuthors from '../../actions/getAuthors'
  
 class IndexAuthor extends Component {
 
+    fetchAuthors = () => {
+        this.props.getAuthors()
+    }
     componentDidMount() {
-        fetch('http://localhost:3000/authors')
-        .then(response => response.json())
-        .then(authors => this.props.addAuthors(authors))
-    }; 
+        this.fetchAuthors
+    }
     
-
     render() {
-        console.log(this.props)
-        const authors = this.props.authors.map(author => {
-            debugger
-            <li key={author.id}><Link to={`/authors/${author.id}`}><button>{author.first_name}</button></Link></li>
-        })
+        const allAuthors = this.props.authors.map(author => (<li key={author.id}><Link to={`/authors/${author.id}`}>{author.first_name}</Link></li>))
         return (
             <ul>
-                {authors}
+               {allAuthors}
             </ul>
         )
     }
@@ -35,7 +31,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addAuthors: () => { dispatch(addAuthors()) }
+        getAuthors: () => dispatch(getAuthors()) 
       }
 }
 

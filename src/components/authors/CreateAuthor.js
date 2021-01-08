@@ -81,7 +81,7 @@ class CreateAuthor extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-      addAuthor: (author) => { dispatch(addAuthor(author)) }
+      addAuthor: author => { dispatch(addAuthor(author)) }
     }
 }
 

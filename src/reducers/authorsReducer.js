@@ -18,7 +18,7 @@ export default function authorsReducer(state = [], action) {
 
 
 
-        
+
  
     // case "REMOVE_AUTHOR":
     //   idx = state.findIndex(book => book.id === action.id);
