@@ -16,6 +16,7 @@ import IndexAuthor from './components/authors/IndexAuthor'
 import authorsReducer from './reducers/authorsReducer.js';
 import booksReducer from './reducers/booksReducer.js';
 import { combineReducers } from "redux";
+import App from './App';
 
 const rootReducer = combineReducers({
   books: booksReducer,
@@ -24,22 +25,30 @@ const rootReducer = combineReducers({
  
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
-ReactDOM.render(
- <React.StrictMode>
-     <Router>
-     <Provider store={store}>
+// ReactDOM.render(
+//  <React.StrictMode>
+//      <Router>
+//      <Provider store={store}>
   
-      <div>
-        <Navbar />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/books/new" component={CreateBook} />
-        <Route exact path="/authors/new" component={CreateAuthor} />
-        <Route exact path="/authors" component={IndexAuthor} />
-        <Route exact path="/authors/:id" component={ShowAuthor} />
-        </div>
+//       <div>
+//         <Navbar />
+//         <Route exact path="/" component={Home} />
+//         <Route exact path="/books/new" component={CreateBook} />
+//         <Route exact path="/authors/new" component={CreateAuthor} />
+//         <Route exact path="/authors" component={IndexAuthor} />
+//         <Route exact path="/authors/:id" component={ShowAuthor} />
+//         </div>
     
+//     </Provider>
+//     </Router>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+ReactDOM.render(
+   <React.StrictMode>
+    <Provider store={store}>
+      <App />,
     </Provider>
-    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

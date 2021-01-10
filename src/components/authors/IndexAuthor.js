@@ -14,7 +14,7 @@ class IndexAuthor extends Component {
 	render() {
 		if (this.props.authors.authors.length > 0) {
 			const allAuthors = this.props.authors.authors.map((author) => {
-				return <li key={author.id}>{author.age}</li>;
+				return <li key={author.id}><Link key={author.id} to={`/authors/${author.id}`}>{author.first_name} </Link></li>;
 			});
 
 			return <div>{allAuthors}</div>;
@@ -26,7 +26,7 @@ class IndexAuthor extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		authors: state.authors,
+		authors: state.authors
 	};
 };
 
