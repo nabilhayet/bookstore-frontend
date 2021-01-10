@@ -1,6 +1,7 @@
 export default function authorsReducer(state = {
     authors: [],
   }, action) {
+    // debugger
     switch (action.type) {
         case "ADD_AUTHOR":
             return {...state, authors: state.authors.concat(action.author)};
