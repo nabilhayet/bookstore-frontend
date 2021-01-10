@@ -9,15 +9,20 @@ class IndexAuthor extends Component {
         this.props.getAuthors()
     }
     componentDidMount() {
-        this.fetchAuthors
+        this.fetchAuthors()
     }
     
     render() {
-        const allAuthors = this.props.authors.map(author => (<li key={author.id}><Link to={`/authors/${author.id}`}>{author.first_name}</Link></li>))
-        return (
-            <ul>
+    const allAuthors =  this.props.authors.map((author =>  {
+        return (<li key={author.id}>{author.age}</li>)
+        }))
+  
+   
+      return ( 
+          <div>
                {allAuthors}
-            </ul>
+          </div>
+           
         )
     }
 
@@ -29,10 +34,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
+const mapDispatchToProps = (dispatch) => {
+    return { 
         getAuthors: () => dispatch(getAuthors()) 
-      }
+    }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexAuthor);
+export default connect(mapStateToProps,mapDispatchToProps)(IndexAuthor);

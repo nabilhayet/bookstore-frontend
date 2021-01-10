@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux'; 
 import Home from './components/Home';
 import CreateBook from './components/books/CreateBook';
@@ -21,8 +22,7 @@ const rootReducer = combineReducers({
   authors: authorsReducer
 })
  
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
  <React.StrictMode>
