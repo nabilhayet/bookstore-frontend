@@ -14,7 +14,9 @@ class CreateAuthor extends Component {
       lastname: "",
       age: "",
       contact: "",
-      submittedData: []
+      submittedData: [],
+      gotAuthor: false,
+      id: ""
     }
 
   }
@@ -44,9 +46,13 @@ class CreateAuthor extends Component {
     .then(response => response.json())
     .then(author => { 
       this.props.addAuthor(author)
-      
+      this.setState({
+        gotAuthor: true,
+        id: author.id 
+      })
+     
     })
-    // <Redirect to={`/authors/${author.id}`} />
+    
   }
 
   render() {
@@ -75,6 +81,9 @@ class CreateAuthor extends Component {
           </p>
           <input type="submit" />
         </form>
+        {this.state.gotAuthor && (
+          <Redirect to={`/authors/${this.state.id}`}/>
+        )}
       </div>
     );
   }
