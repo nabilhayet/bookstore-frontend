@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import IndexAuthor from './IndexAuthor';
-import ShowAuthor from './ShowAuthor';
+// import React from 'react';
+// import { Route } from 'react-router-dom';
+// import IndexAuthor from './IndexAuthor';
+// import ShowAuthor from './ShowAuthor';
  
 // const AuthorsPage = ({ match, authors }) => (
 //   <div>

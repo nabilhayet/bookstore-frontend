@@ -10,9 +10,17 @@ import AuthorsPage from './components/authors/AuthorsPage'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { getAuthors } from './actions/getAuthors';
 
 
 class App extends Component {
+
+  fetchAuthors = () => {
+		this.props.getAuthors();
+	};
+	componentDidMount() {
+		this.fetchAuthors();
+	}
   render() {
   return (
     <Router>
@@ -22,7 +30,7 @@ class App extends Component {
          <Route exact path="/books/new" component={CreateBook} />
          <Route exact path="/authors/new" component={CreateAuthor} />
          <Route exact path="/authors" component={IndexAuthor} />
-         <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps} />} />
+         <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps} authors={this.props.authors} />} />
     </div>
     </Router>
   );
@@ -35,5 +43,11 @@ const mapStateToProps = (state) => {
 	};
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+      getAuthors: () => { dispatch(getAuthors()) }
+    }
+}
 
-export default connect(mapStateToProps)(App);
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+// import { connect } from 'react-redux';
 
-class ShowAuthor extends Component {
-render() {
-  return (
-     <div>
-         <h3> Hello </h3>
-    </div>
+function ShowAuthor(props) { 
+    debugger
+    const renderSingleAuthor = props.authors.filter(a=> a.id === props.match.params.id) 
+    return (
+       <div>
+            { renderSingleAuthor }
+      </div>
   );
 }
-}
+
  
-const mapStateToProps = (state) => {
-	return {
-		authors: state.authors
-	};
-};
+// const mapStateToProps = (state) => {
+// 	return {
+// 		authors: state.authors 
+// 	};
+// };
 
 
-export default connect(mapStateToProps)(ShowAuthor);
+// export default connect(mapStateToProps)(ShowAuthor);
+export default ShowAuthor;

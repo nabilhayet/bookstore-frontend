@@ -44,8 +44,9 @@ class CreateAuthor extends Component {
     .then(response => response.json())
     .then(author => { 
       this.props.addAuthor(author)
+      
     })
-    // <Redirect to={`/authors/${author.id}`}/>
+    // <Redirect to={`/authors/${author.id}`} />
   }
 
   render() {
