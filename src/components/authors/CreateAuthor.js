@@ -52,7 +52,6 @@ class CreateAuthor extends Component {
       })
      
     })
-    
   }
 
   render() {

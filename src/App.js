@@ -6,6 +6,7 @@ import CreateAuthor from './components/authors/CreateAuthor';
 import Navbar from './components/Navbar';
 import ShowAuthor from './components/authors/ShowAuthor'
 import IndexAuthor from './components/authors/IndexAuthor'
+import EditAuthor from './components/authors/EditAuthor'
 // import AuthorsPage from './components/authors/AuthorsPage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Component } from 'react';
@@ -32,6 +33,8 @@ class App extends Component {
          <Route exact path="/authors/new" component={CreateAuthor} />
          <Route exact path="/authors" component={IndexAuthor} />
          <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps}  />} />
+         <Route exact path='/authors/:id/edit' render={routerProps => <EditAuthor {...routerProps}  />} />
+
          </Switch>
     </div>
     </Router>
