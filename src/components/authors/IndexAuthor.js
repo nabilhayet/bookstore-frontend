@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAuthors } from '../../actions/getAuthors';
+import { deleteAuthor } from '../../actions/deleteAuthor';
 
 class IndexAuthor extends Component {
+
+	handleDeleteAuthor = (event) => {
+		event.preventDefault()
+		this.props.deleteAuthor(event.target.id)
+	}
+
 	render() {
 		if (this.props.authors.authors.length > 0) {
 			const allAuthors = this.props.authors.authors.map((author) => {
 				return(
 					<li key={author.id}><Link key={author.id} to={`/authors/${author.id}`}>{author.first_name}</Link>
 						<Link key={author.id} to={`/authors/${author.id}/edit`}><button>UPDATE</button></Link>
+						<button id={author.id} onClick={this.handleDeleteAuthor}>DELETE</button>
 					</li>
 				)
 					
@@ -26,4 +34,11 @@ const mapStateToProps = (state) => {
 		authors: state.authors
 	};
 };
-export default connect(mapStateToProps, { getAuthors })(IndexAuthor);
+
+const mapDispatchToProps = dispatch => {
+	return {
+		getAuthors: () => { dispatch(getAuthors()) },
+		deleteAuthor: (id) => {dispatch(deleteAuthor(id))}
+	  }
+  }
+export default connect(mapStateToProps,mapDispatchToProps)(IndexAuthor);

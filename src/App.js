@@ -25,12 +25,12 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/books/new" component={CreateBook} />
-          <Route exact path="/authors/new" component={CreateAuthor} />
-          <Route exact path="/authors" component={IndexAuthor} />
-          <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps}  />} />
-          <Route exact path='/authors/:id/edit' render={routerProps => <EditAuthor {...routerProps}  />} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/books/new" component={CreateBook} />
+            <Route exact path="/authors/new" component={CreateAuthor} />
+            <Route exact path="/authors" component={IndexAuthor} />
+            <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps}  />} />
+            <Route exact path='/authors/:id/edit' render={routerProps => <EditAuthor {...routerProps}  />} />
           </Switch>
         </div>
     </Router>

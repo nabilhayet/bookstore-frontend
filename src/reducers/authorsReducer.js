@@ -10,6 +10,10 @@ export default function authorsReducer(state = { authors: [] }, action) {
             const newState = [...state.authors]
             newState.splice(idx, 1, action.author);
             return {...state, authors: newState }
+
+        case "DELETE_AUTHOR":
+            idx = state.authors.findIndex(author => author.id == action.id);
+            return {...state, authors: [...state.authors.slice(0, idx), ...state.authors.slice(idx + 1)]};
         default:
             return state;
     }
