@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { render } from 'react-dom'
 import updateAuthor from '../../actions/update'
 
- class EditAuthor extends Component {
-     constructor(props) {
-         super(props)
-         this.state = {
+class EditAuthor extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
             firstname: "",
             lastname: "",
             age: "",
@@ -15,21 +14,20 @@ import updateAuthor from '../../actions/update'
             submittedData: [],
             gotAuthor: false,
             id: ""
-         }
-     }
-     handleChange = event => {
+        }
+    }
+    handleChange = event => {
         this.setState({
           [event.target.id]: event.target.value
         })
-      }
-    
-      handleSubmit =(event) => {
+    }
+    handleSubmit =(event) => {
         event.preventDefault()
         const author = {first_name: this.state.firstname, last_name: this.state.lastname, age: this.state.age, contact: this.state.contact}
         this.updateAuthor(author)
-      }
+    }
 
-      updateAuthor = (author) => {
+    updateAuthor = (author) => {
         const configobj = {
           method: 'PATCH',
           body: JSON.stringify(author),
@@ -47,9 +45,9 @@ import updateAuthor from '../../actions/update'
           })
          
         })
-      }
+    }
 
-     getAuthor = () => {
+    getAuthor = () => {
         const getAuthor = this.props.authors.filter(a=> a.id == this.props.match.params.id) 
         this.setState({
          firstname: getAuthor[0].first_name,
@@ -60,10 +58,9 @@ import updateAuthor from '../../actions/update'
         })
     } 
 
-     componentDidMount() {
-         this.getAuthor()
-     }
-
+    componentDidMount() {
+        this.getAuthor()
+    }
     render() { 
        return(
             <div>
@@ -103,11 +100,9 @@ const mapDispatchToProps = dispatch => {
         updateAuthor: author => { dispatch(updateAuthor(author)) }
       }
 }
-
 const mapStateToProps = (state) => {
 	return {
 		authors: state.authors.authors
 	};
 };
-
- export default connect(mapStateToProps,mapDispatchToProps)(EditAuthor);
+export default connect(mapStateToProps,mapDispatchToProps)(EditAuthor);

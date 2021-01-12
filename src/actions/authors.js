@@ -3,4 +3,4 @@ export default function addAuthor(author) {
       type: 'ADD_AUTHOR',
       author: author
     }
-  }
+}

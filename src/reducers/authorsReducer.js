@@ -3,9 +3,9 @@ export default function authorsReducer(state = { authors: [] }, action) {
     switch (action.type) {
         case "ADD_AUTHOR":
             return {...state, authors: [...state.authors, action.author]};
-          case "GET_AUTHORS":
-              return {...state, authors: action.authors};
-          case "UPDATE_AUTHOR":
+        case "GET_AUTHORS":
+            return {...state, authors: action.authors};
+        case "UPDATE_AUTHOR":
             idx = state.authors.findIndex(author => author.id === action.author.id);
             const newState = [...state.authors]
             newState.splice(idx, 1, action.author);
@@ -13,7 +13,7 @@ export default function authorsReducer(state = { authors: [] }, action) {
         default:
             return state;
     }
-  }
+}
 
 
 

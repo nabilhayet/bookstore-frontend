@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import addAuthor from '../../actions/authors'
  
 class CreateAuthor extends Component {
-
   constructor(){
     super()
     this.state = {
@@ -20,19 +19,16 @@ class CreateAuthor extends Component {
     }
 
   }
-
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value
     })
   }
-
   handleSubmit =(event) => {
     event.preventDefault()
     const author = {first_name: this.state.firstname, last_name: this.state.lastname, age: this.state.age, contact: this.state.contact}
     this.createNewAuthor(author)
   }
-
   createNewAuthor = (author) => {
     const configobj = {
       method: 'POST',
@@ -53,7 +49,6 @@ class CreateAuthor extends Component {
      
     })
   }
-
   render() {
     return(
       <div>
@@ -87,12 +82,9 @@ class CreateAuthor extends Component {
     );
   }
 };
-
 const mapDispatchToProps = dispatch => {
   return {
       addAuthor: author => { dispatch(addAuthor(author)) }
     }
 }
-
- 
 export default connect(null, mapDispatchToProps)(CreateAuthor);

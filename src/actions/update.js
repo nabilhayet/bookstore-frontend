@@ -3,4 +3,4 @@ export default function updateAuthor(author) {
       type: 'UPDATE_AUTHOR',
       author: author
     }
-  }
+}
