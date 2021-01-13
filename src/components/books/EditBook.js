@@ -17,6 +17,13 @@ class EditBook extends Component {
         }
       }
 
+      addDropDownMenu = () => {
+        return this.props.authors.authors.map(author => {
+          const full_name = author.first_name + " " + author.last_name
+          return <option key={author.id} value={author.id}>{full_name}</option>
+        })
+    }
+
     handleChange = event => {
         this.setState({
           [event.target.id]: event.target.value
@@ -104,7 +111,8 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = (state) => {
 	return {
-		books: state.books.books
+        books: state.books.books,
+        authors: state.authors
 	};
 };
 export default connect(mapStateToProps,mapDispatchToProps)(EditBook);

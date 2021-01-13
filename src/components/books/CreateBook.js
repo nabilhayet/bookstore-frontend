@@ -12,7 +12,7 @@ class CreateBook extends Component {
       title: '',
       pages: '',
       chapters: '',
-      author_id: '',
+      author_id: `${this.props.authors.authors[0].id}`,
       gotBook: false,
       id: ""
 
@@ -54,18 +54,14 @@ handleChange = event => {
 }
 
 handleChangeAuthor = event => {
-  debugger
   this.setState({
     author_id: event.target.value
   })
-  debugger
 }
 
 handleSubmit =(event) => {
   event.preventDefault()
-  debugger
   const book = {title: this.state.title, pages: this.state.pages, chapters: this.state.chapters, author_id: this.state.author_id}
-  
   this.createNewBook(book)
 }
 createNewBook = (book) => {
@@ -92,31 +88,7 @@ createNewBook = (book) => {
  
   render() {
     return(
-      // <div>
-      //   <form>
-      //     <p>
-      //       <label>Title</label>
-      //       <input type="text" />
-      //     </p>
-      //     <p>
-      //       <label>Pages</label>
-      //       <input type="number" />
-      //     </p>
-      //     <p>
-      //       <label>Chapters</label>
-      //       <input type="number" />
-      //     </p>
-      //     <p>
-      //       <label>Author</label>
-      //       <select value="" onChange={this.handleChange}>
-      //         {this.addDropDownMenu()}
-      //       </select>
-      //     </p>
-      //     <input type="submit" />
-      //   </form>
-      // </div>
-
-      <div>
+     <div>
       <form onSubmit={event => this.handleSubmit(event)}>
         <p>
           <label>Title</label>
@@ -135,7 +107,7 @@ createNewBook = (book) => {
         </p>
         <p>
         <label>Author</label>
-          <select value="" onChange={event => this.handleChangeAuthor(event)}>
+          <select value={this.state.author_id} onChange={event => this.handleChangeAuthor(event)}>
             {this.addDropDownMenu()}
           </select>
         </p>
