@@ -27,6 +27,10 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/books/new" component={CreateBook} />
+            <Route exact path="/books" component={IndexBook} />
+            <Route exact path='/books/:id' render={routerProps => <ShowBook {...routerProps}  />} />
+            <Route exact path='/books/:id/edit' render={routerProps => <EditBook {...routerProps}  />} />
+
             <Route exact path="/authors/new" component={CreateAuthor} />
             <Route exact path="/authors" component={IndexAuthor} />
             <Route exact path='/authors/:id' render={routerProps => <ShowAuthor {...routerProps}  />} />
