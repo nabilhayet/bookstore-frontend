@@ -12,7 +12,7 @@ class CreateBook extends Component {
       title: '',
       pages: '',
       chapters: '',
-      author: '',
+      author_id: '',
       gotBook: false,
       id: ""
 
@@ -43,7 +43,7 @@ class CreateBook extends Component {
 addDropDownMenu = () => {
       return this.props.authors.authors.map(author => {
         const full_name = author.first_name + " " + author.last_name
-        return <option id="author"  key ={author.id} value={full_name}>{full_name}</option>
+        return <option id={author.id} key={author.id} value={full_name}>{full_name}</option>
       })
   }
 
@@ -52,9 +52,16 @@ handleChange = event => {
     [event.target.id]: event.target.value
   })
 }
+handleChangeAuthor = event => {
+  debugger
+  this.setState({
+    author_id: event.target.id 
+  })
+}
+
 handleSubmit =(event) => {
   event.preventDefault()
-  const book = {title: this.state.title, pages: this.state.pages, chapters: this.state.chapters, author: this.state.author}
+  const book = {title: this.state.title, pages: this.state.pages, chapters: this.state.chapters, author_id: this.state.author_id}
   this.createNewBook(book)
 }
 createNewBook = (book) => {
@@ -124,7 +131,7 @@ createNewBook = (book) => {
         </p>
         <p>
         <label>Author</label>
-          <select value="" onChange={this.handleChange}>
+          <select value="" onChange={this.handleChangeAuthor}>
             {this.addDropDownMenu()}
           </select>
         </p>
