@@ -1,6 +1,5 @@
 // ./src/components/authors/CreateAuthor.js
 import React, { Component } from 'react'
-import ShowAuthor from './ShowAuthor'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import addAuthor from '../../actions/authors'

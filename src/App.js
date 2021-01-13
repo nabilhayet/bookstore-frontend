@@ -1,11 +1,16 @@
 import './App.css';
 import Home from './components/Home';
-import CreateBook from './components/books/CreateBook';
 import CreateAuthor from './components/authors/CreateAuthor';
 import Navbar from './components/Navbar';
 import ShowAuthor from './components/authors/ShowAuthor'
 import IndexAuthor from './components/authors/IndexAuthor'
 import EditAuthor from './components/authors/EditAuthor'
+
+import CreateBook from './components/books/CreateBook';
+import ShowBook from './components/books/ShowBook'
+import IndexBook from './components/books/IndexBook'
+import EditBook from './components/books/EditBook'
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Component } from 'react';
 import { connect } from 'react-redux';
