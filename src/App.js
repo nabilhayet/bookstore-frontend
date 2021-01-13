@@ -15,15 +15,26 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAuthors } from './actions/getAuthors';
+import { getBooks } from './actions/getBooks';
 
 class App extends Component {
 
-  fetchAuthors = () => {
-		this.props.getAuthors();
-	};
-	componentDidMount() {
-		this.fetchAuthors();
-	}
+  // fetchAuthors = () => {
+	// 	this.props.getAuthors();
+	// };
+	// componentDidMount() {
+	// 	this.fetchAuthors();
+  // }
+
+  fetchEverything = () => {
+    this.props.getAuthors();
+    this.props.getBooks();
+  }
+  
+  componentDidMount() {
+    this.fetchEverything()
+  }
+
   render() {
     return (
       <Router>
@@ -48,12 +59,14 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
 	return {
-		authors: state.authors
+    authors: state.authors,
+    books: state.books 
 	};
 };
 const mapDispatchToProps = dispatch => {
   return {
-      getAuthors: () => { dispatch(getAuthors()) }
+      getAuthors: () => { dispatch(getAuthors()) },
+      getBooks: () => { dispatch(getBooks()) }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);
