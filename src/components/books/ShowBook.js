@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 function ShowBook(props) { 
     const renderSingleBook = props.books.filter(b=> b.id == props.match.params.id) 
+    const getTheAuthor = props.authors.filter(a=> a.id == renderSingleBook[0].author_id)
       return (
         <div>
           <br>
@@ -16,13 +17,14 @@ function ShowBook(props) {
             Chapters: { renderSingleBook[0].chapters }
             <br>
             </br>
-            Author: { renderSingleBook[0].author.first_name }
+            Author: { getTheAuthor[0].first_name }
         </div>
       );
 }
 const mapStateToProps = (state) => {
 	return {
-		books: state.books.books
+        books: state.books.books,
+        authors: state.authors.authors
 	};
 };
 export default connect(mapStateToProps)(ShowBook);

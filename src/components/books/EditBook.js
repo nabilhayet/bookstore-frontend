@@ -12,15 +12,19 @@ class EditBook extends Component {
           chapters: '',
           author_id: '',
           gotBook: false,
-          id: ""
+          id: "",
+          author_name: ''
     
         }
       }
 
       addDropDownMenu = () => {
         return this.props.authors.authors.map(author => {
-          const full_name = author.first_name + " " + author.last_name
-          return <option key={author.id} value={author.id}>{full_name}</option>
+            if(author.id !== this.state.author_id) {
+                const full_name = author.first_name + " " + author.last_name
+                     return <option key={author.id} value={author.id}>{full_name}</option>
+            }
+         
         })
     }
 
@@ -54,22 +58,51 @@ class EditBook extends Component {
          
         })
     }
+    
+    // getName = () => {
+    //     debugger
+    //     const findName = this.props.authors.authors[this.state.author_id]
+    // }
+
+    // setMyAuthorName = () => {
+    //     debugger
+    //     this.setState({
+           
+    //     })
+       
+    // }
+
+    handleChangeAuthor = () => {
+
+    }
 
     getBook = () => {
         const getBook = this.props.books.filter(b=> b.id == this.props.match.params.id) 
+        const getAuthor = getBook[0].author
         this.setState({
          title: getBook[0].title,
          pages: getBook[0].pages,
          chapters: getBook[0].chapters,
-         author: getBook[0].author.first_name,
-         id: getBook[0].id 
+         author_id: getBook[0].author_id,
+         id: getBook[0].id,
+         author_name: getAuthor.first_name 
+        //  author_name: this.props.authors.authors[this.state.author_id].first_name 
         })
     } 
 
+    handleChangeAuthor = event => {
+        this.setState({
+          author_id: event.target.value
+        })
+      }
+
     componentDidMount() {
+        console.log("my new prop")
         this.getBook()
     }
     render() { 
+         console.log(this.state)
+        console.log("My render")
        return(
         <div>
         <form onSubmit={event => this.handleSubmit(event)}>
@@ -90,7 +123,8 @@ class EditBook extends Component {
           </p>
           <p>
           <label>Author</label>
-            <select value="" onChange={event => this.handleChangeAuthor(event)}>
+            <select value={this.state.author_id} onChange={event => this.handleChangeAuthor(event)}>
+                <option key={this.state.author_id} value={this.state.author_id}>{this.state.author_name}</option>
               {this.addDropDownMenu()}
             </select>
           </p>

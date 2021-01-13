@@ -18,28 +18,6 @@ class CreateBook extends Component {
 
     }
   }
-
-//   componentDidMount() {
-//     fetch('http://localhost:3000/authors')
-//     .then(response => response.json())
-//     .then(authors => { 
-//       this.setState({
-//          authors: authors
-//       })
-//     })
-//   }
-
-//   addDropDownMenu = () => {
-//     return this.state.authors.map(author => {
-//       const full_name = author.first_name + " " + author.last_name
-//       return <option  key ={author.id} value={full_name}>{full_name}</option>
-//     })
-// }
-
-// handleChange =(event) => {
-//   debugger 
-// }
-
 addDropDownMenu = () => {
       return this.props.authors.authors.map(author => {
         const full_name = author.first_name + " " + author.last_name
@@ -78,7 +56,7 @@ createNewBook = (book) => {
   .then(book => { 
     this.props.addBook(book)
     this.setState({
-      gotAuthor: true,
+      gotBook: true,
       id: book.id 
     })
    
