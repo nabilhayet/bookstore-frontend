@@ -16,14 +16,13 @@ class IndexBook extends Component {
 			width: '100px',
 			padding: '12px',
 			margin: '0 6px 6px',
-			background: 'purple',
-			textDecoration: 'none',
-			color: 'white',
+			background: 'black',
+			color: 'burlywood'
 		  }
 		if (this.props.books.books.length > 0) {
 			const allBooks = this.props.books.books.map((book) => {
 				return(
-					<li key={book.id}><Link key={book.id} to={`/books/${book.id}`}>{book.title}</Link>
+					<li key={book.id}><Link key={book.id} style={link} to={`/books/${book.id}`}>{book.title}</Link>
 						<Link key={book.id} style={link} to={`/books/${book.id}/edit`}><button>UPDATE</button></Link>
 						<button id={book.id} style={link} onClick={this.handleDeleteBook}>DELETE</button>
 					</li>

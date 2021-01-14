@@ -116,7 +116,7 @@ class EditBook extends Component {
               {this.addDropDownMenu()}
             </select>
           </p>
-          <input type="submit" />
+          <input type="submit" class="btn"/>
         </form>
             {this.state.gotBook && (
                 <Redirect to={`/books/${this.state.id}`}/>

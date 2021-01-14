@@ -85,7 +85,7 @@ class EditAuthor extends Component {
             <input type="number" id="contact" onChange={event => this.handleChange(event)}
             value={this.state.contact}/>
             </p>
-            <input type="submit" />
+            <input type="submit" class="btn"/>
             </form>
             {this.state.gotAuthor && (
                 <Redirect to={`/authors/${this.state.id}`}/>
