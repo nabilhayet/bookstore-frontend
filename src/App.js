@@ -19,13 +19,6 @@ import { getBooks } from './actions/getBooks';
 
 class App extends Component {
 
-  // fetchAuthors = () => {
-	// 	this.props.getAuthors();
-	// };
-	// componentDidMount() {
-	// 	this.fetchAuthors();
-  // }
-
   fetchEverything = () => {
     this.props.getAuthors();
     this.props.getBooks();
