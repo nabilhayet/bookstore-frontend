@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 function ShowBook(props) { 
     const renderSingleBook = props.books.filter(b=> b.id == props.match.params.id) 
-    const getTheAuthor = props.authors.filter(a=> a.id == renderSingleBook[0].author_id)
+    // const getTheAuthor = props.authors.filter(a=> a.id == renderSingleBook[0].author_id)
       return (
         <div>
           <br>
@@ -17,7 +17,7 @@ function ShowBook(props) {
             Chapters: { renderSingleBook[0].chapters }
             <br>
             </br>
-            Author: { getTheAuthor[0].first_name }
+            Author: { renderSingleBook[0].author.first_name }
         </div>
       );
 }

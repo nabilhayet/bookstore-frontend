@@ -18,15 +18,23 @@ class EditBook extends Component {
         }
       }
 
-      addDropDownMenu = () => {
-        return this.props.authors.authors.map(author => {
-            if(author.id !== this.state.author_id) {
-                const full_name = author.first_name + " " + author.last_name
-                     return <option key={author.id} value={author.id}>{full_name}</option>
-            }
+    //   addDropDownMenu = () => {
+    //     return this.props.authors.authors.map(author => {
+    //         if(author.id !== this.state.author_id) {
+    //             const f_name = author.first_name
+    //                  return <option key={author.id} value={author.id}>{f_name}</option>
+    //         }
          
+    //     })
+    // }
+
+    addDropDownMenu = () => {
+        return this.props.authors.authors.map(author => {
+            return <option key={author.id} value={author.id}>{author.first_name}</option>
         })
     }
+
+
 
     handleChange = event => {
         this.setState({
@@ -59,24 +67,7 @@ class EditBook extends Component {
         })
     }
     
-    // getName = () => {
-    //     debugger
-    //     const findName = this.props.authors.authors[this.state.author_id]
-    // }
-
-    // setMyAuthorName = () => {
-    //     debugger
-    //     this.setState({
-           
-    //     })
-       
-    // }
-
-    handleChangeAuthor = () => {
-
-    }
-
-    getBook = () => {
+   getBook = () => {
         const getBook = this.props.books.filter(b=> b.id == this.props.match.params.id) 
         const getAuthor = getBook[0].author
         this.setState({
@@ -97,12 +88,9 @@ class EditBook extends Component {
       }
 
     componentDidMount() {
-        console.log("my new prop")
         this.getBook()
     }
     render() { 
-         console.log(this.state)
-        console.log("My render")
        return(
         <div>
         <form onSubmit={event => this.handleSubmit(event)}>
@@ -124,7 +112,7 @@ class EditBook extends Component {
           <p>
           <label>Author</label>
             <select value={this.state.author_id} onChange={event => this.handleChangeAuthor(event)}>
-                <option key={this.state.author_id} value={this.state.author_id}>{this.state.author_name}</option>
+                {/* <option key={this.state.author_id} value={this.state.author_id}>{this.state.author_name}</option> */}
               {this.addDropDownMenu()}
             </select>
           </p>
