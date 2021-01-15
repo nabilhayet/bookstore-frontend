@@ -71,17 +71,17 @@ createNewBook = (book) => {
         <p>
           <label>Title</label>
           <input type="text" id="title" onChange={event => this.handleChange(event)}
-          value={this.state.title}/>
+          value={this.state.title} required/>
         </p>
         <p>
           <label>Pages</label>
           <input type="number" id="pages" onChange={event => this.handleChange(event)}
-          value={this.state.pages}/>
+          value={this.state.pages} required/>
         </p>
         <p>
           <label>Chapters</label>
           <input type="number" id="chapters" onChange={event => this.handleChange(event)}
-          value={this.state.chapters}/>
+          value={this.state.chapters} required/>
         </p>
         <p>
         <label>Author</label>

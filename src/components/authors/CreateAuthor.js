@@ -55,22 +55,22 @@ class CreateAuthor extends Component {
           <p>
             <label>First Name</label>
             <input type="text" id="firstname" onChange={event => this.handleChange(event)}
-            value={this.state.firstname}/>
+            value={this.state.firstname} required/>
           </p>
           <p>
             <label>Last Name</label>
             <input type="text" id="lastname" onChange={event => this.handleChange(event)}
-            value={this.state.lastname}/>
+            value={this.state.lastname} required/>
           </p>
           <p>
             <label>Age</label>
             <input type="number" id="age" onChange={event => this.handleChange(event)}
-            value={this.state.age}/>
+            value={this.state.age} required/>
           </p>
           <p>
             <label>Contact</label>
             <input type="number" id="contact" onChange={event => this.handleChange(event)}
-            value={this.state.contact}/>
+            value={this.state.contact} required/>
           </p>
           <input type="submit" class="btn"/>
         </form>
