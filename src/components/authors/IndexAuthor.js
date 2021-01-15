@@ -18,8 +18,8 @@ class IndexAuthor extends Component {
 			width: '100px',
 			padding: '12px',
 			margin: '0 6px 6px',
-			background: 'black',
-			color: 'burlywood'
+			background: 'burlywood',
+			color: 'brown'
 		  }
 		if (this.props.authors.authors.length > 0) {
 			const allAuthors = this.props.authors.authors.map((author) => {

@@ -16,8 +16,8 @@ class IndexBook extends Component {
 			width: '100px',
 			padding: '12px',
 			margin: '0 6px 6px',
-			background: 'black',
-			color: 'burlywood'
+			background: 'burlywood',
+			color: 'brown'
 		  }
 		if (this.props.books.books.length > 0) {
 			const allBooks = this.props.books.books.map((book) => {
