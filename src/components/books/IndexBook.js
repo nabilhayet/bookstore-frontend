@@ -5,31 +5,115 @@ import { getBooks } from '../../actions/getBooks';
 import { deleteBook } from '../../actions/deleteBook';
 
 class IndexBook extends Component {
-	
-    handleDeleteBook = (event) => {
-		event.preventDefault()
-		this.props.deleteBook(event.target.id)
-	}
 
-	render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            ids: [],
+            like: 0,
+            likes: [{id: 0, likee: 0}],
+            currentBooks: [], 
+            search: '',
+            message: '',
+            Num_Of_Likes: 0,
+            index: 0 
+        }
+    }
+
+    componentDidMount(){
+        this.setState({
+            ...this.state, currentBooks: this.props.books.books
+        })
+    }
+
+    onClick(event){
+        if(this.state.search !== '') {
+            const searchBook = this.state.currentBooks.filter((book) => book.title === this.state.search)
+            if(searchBook.length !== 0) {
+                this.setState({
+                    ...this.state, currentBooks: searchBook
+                })
+            }
+            else {
+                this.setState({
+                    ...this.state, message: 'No Match'
+                })
+            }
+        }
+    }
+
+    onChange(event){
+        this.setState({
+            search: event.target.value
+        })
+    }
+
+	handleDeleteBook = (event) => {
+        event.preventDefault()
+        this.props.deleteBook(event.target.id)
+        this.componentDidMount()
+    }
+
+    handleClear(event) {
+        this.setState({
+            ...this.state, currentBooks: this.props.books.books, message: '', search: ''
+        })
+    }
+
+    handleLike = (event) => {
+        let findID = this.state.ids.includes(event.target.id)
+        if(findID) {
+            let i = this.state.likes.findIndex(obj => obj.id == event.target.id);
+            this.setState({
+                ...this.state,
+                Num_Of_Likes: this.state.likes[i].likee +=1,
+                index: i 
+            })
+        }
+        else {
+            const likeObj = { id: event.target.id, likee: this.state.like + 1 }
+            this.state.likes.push(likeObj)
+            let v = this.state.likes.findIndex(obj => obj.id == event.target.id);
+
+            this.setState({
+                ...this.state,
+                Num_Of_Likes:  this.state.likes[v].likee,
+                index: v,
+                ids: event.target.id 
+            })  
+        }
+    }
+    
+    render() {
 		const link = {
 			width: '100px',
 			padding: '12px',
 			margin: '0 6px 6px',
 			background: 'burlywood',
 			color: 'brown'
-		  }
+        }
+        // {this.state.likes[this.state.likes.findIndex(obj => obj.id == book.id)].likee}
 		if (this.props.books.books.length > 0) {
-			const allBooks = this.props.books.books.map((book) => {
+			const allBooks = this.state.currentBooks.map((book) => {
 				return(
 					<li key={book.id}><Link key={book.id} style={link} to={`/books/${book.id}`}>{book.title}</Link>
 						<Link key={book.id} style={link} to={`/books/${book.id}/edit`}><button>UPDATE</button></Link>
 						<button id={book.id} style={link} onClick={this.handleDeleteBook}>DELETE</button>
+                        <button id={book.id} onClick={event => this.handleLike(event)}>{(this.state.likes.findIndex(obj => obj.id == book.id)) === -1 ? 0 : this.state.likes[this.state.likes.findIndex(obj => obj.id == book.id)].likee} LIKE</button>
 					</li>
 				)
 					
-			});
-		return <div><br></br>{allBooks}</div>;
+            });
+            
+		return ( <div>
+                    {this.state.message}<br></br>
+                    <input type="text" placeholder="search" value={this.state.search} onChange={(event) => this.onChange(event)}/>
+                    <button onClick={(event) => this.onClick(event)}>Search</button> 
+                    <button onClick={event => this.handleClear(event)}>Clear</button> 
+                    {allBooks}
+                   
+                </div>
+                )
 		} 
 		else {
 			return <div>No Books</div>;

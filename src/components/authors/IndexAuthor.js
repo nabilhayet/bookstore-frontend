@@ -20,7 +20,7 @@ class IndexAuthor extends Component {
 			margin: '0 6px 6px',
 			background: 'burlywood',
 			color: 'brown'
-		  }
+		}
 		if (this.props.authors.authors.length > 0) {
 			const allAuthors = this.props.authors.authors.map((author) => {
 				return(

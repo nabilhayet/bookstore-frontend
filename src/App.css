@@ -111,6 +111,10 @@ label {
   margin-bottom: 0px;
 }
 
+h2 { 
+  color: red;
+}
+
 
 .content-table {
   border-collapse: collapse;
