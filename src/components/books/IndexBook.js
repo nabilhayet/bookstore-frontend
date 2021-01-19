@@ -11,7 +11,7 @@ class IndexBook extends Component {
         this.state = {
             ids: [],
             like: 0,
-            likes: [{id: 0, likee: 0}],
+            likes: [],
             currentBooks: [], 
             search: '',
             message: '',
@@ -67,7 +67,7 @@ class IndexBook extends Component {
             this.setState({
                 ...this.state,
                 Num_Of_Likes: this.state.likes[i].likee +=1,
-                index: i 
+                
             })
         }
         else {
@@ -78,7 +78,6 @@ class IndexBook extends Component {
             this.setState({
                 ...this.state,
                 Num_Of_Likes:  this.state.likes[v].likee,
-                index: v,
                 ids: event.target.id 
             })  
         }
