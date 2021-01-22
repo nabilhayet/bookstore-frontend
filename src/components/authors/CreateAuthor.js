@@ -16,9 +16,8 @@ class CreateAuthor extends Component {
       gotAuthor: false,
       id: ""
     }
-
   }
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     })
@@ -54,7 +53,7 @@ class CreateAuthor extends Component {
         <form onSubmit={event => this.handleSubmit(event)}>
           <p>
             <label>First Name</label>
-            <input type="text" id="firstname" onChange={event => this.handleChange(event)}
+            <input type="text" id="firstname" onChange={this.handleChange}
             value={this.state.firstname} required/>
           </p>
           <p>

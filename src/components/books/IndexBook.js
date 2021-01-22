@@ -41,6 +41,24 @@ class IndexBook extends Component {
             }
         }
     }
+    handleSortingBooks = (event) => {
+        if(this.props.books.books.length > 1) {
+            this.state.currentBooks.sort(this.compare)
+            this.handleClear()
+        }
+    }
+    compare(a, b) {
+        const titleA = a.title.toUpperCase();
+        const titleB = b.title.toUpperCase();
+      
+        let comparison = 0;
+        if (titleA > titleB) {
+          comparison = 1;
+        } else if (titleA < titleB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
 
     onChange(event){
         this.setState({
@@ -51,7 +69,6 @@ class IndexBook extends Component {
 	handleDeleteBook = (event) => {
         event.preventDefault()
         this.props.deleteBook(event.target.id)
-        this.componentDidMount()
     }
 
     handleClear(event) {
@@ -109,6 +126,7 @@ class IndexBook extends Component {
                     <input type="text" placeholder="search" value={this.state.search} onChange={(event) => this.onChange(event)}/>
                     <button onClick={(event) => this.onClick(event)}>Search</button> 
                     <button onClick={event => this.handleClear(event)}>Clear</button> 
+                    <button onClick={event => this.handleSortingBooks(event)}>Sort</button>
                     {allBooks}
                    
                 </div>
