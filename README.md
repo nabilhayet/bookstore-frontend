@@ -1,9 +1,10 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/nabilhayet/Restaurant) ![GitHub forks](https://img.shields.io/github/forks/nabilhayet/Restaurant) ![GitHub followers](https://img.shields.io/github/followers/nabilhayet) ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/nabilhayet/Restaurant)                                          
                                         <h1>:bomb: BookStore :bomb: </h1>
                                                       
-This project lets a user to create a new kingdom or an animal. After creating, a user can make see all the existing kingdoms or animals with a link. After clicking on a link, the details of a kingdom/animal can be viewed. Updating or deleting an animal option available to the user.
+This project lets a user to add a new book or author. After creating, a user can see all the existing authors or books. After clicking on a link, the details of an author/book can be viewed. Updating or deleting an author/book option available to the user.
 
 <a href="https://www.youtube.com/watch?v=54azoDzOMTc&t=1s">Demo</a>
+<a href="https://github.com/nabilhayet/bookstore-backend">Backend</a>
 
 Table of Contents
 - [Features](#features)
@@ -15,16 +16,14 @@ Table of Contents
                                
 ## Features
 <ul>
-<li>Full CRUD capabilities for Animals such as</li>
-<li>Add a new animal</li>
-<li>View all existing animals on this application</li>
-<li>Edit/Delete the animals</li>
-<li>Full CRUD capabilities for kingdoms such as</li>
-<li>Add a new kingdom</li>
-<li>View all existing kingdoms on this application</li>
-<li>Edit/Delete the kingdoms</li>
-<li>Search a perticular kingdom</li>
-<li>Sort the animals in descing order</li>
+ <li>Full CRUD capabilities for authors such as</li>
+ <li>Add a new author</li>
+ <li>View all existing authors on this application</li>
+ <li>Edit/Delete the authors</li>
+ <li>Full CRUD capabilities for books such as</li>
+ <li>Add a new book</li>
+ <li>View all existing books on this application</li>
+ <li>Edit/Delete the books added</li>
 </ul>
 
 ## Signup 
@@ -72,38 +71,80 @@ Table of Contents
 ## Code-Snippet 
 
 ```
-function fetchSingleAnimal(){
- event.preventDefault()
- const id = event.target.dataset.id 
- clearContentAnimal()
- createAnimalFormDiv.innerHTML = ''
- fetch(BASE_URLS +  '/animals/' + id)
- .then(response => response.json())
- .then(ani => {
-  const an = new An(ani)
-  main_animal.querySelector("ul").innerHTML += an.displaySingleAnimal()
- })
+class CreateAuthor extends Component {
+ constructor(){
+  super()
+  this.state = {
+   firstname: "",
+   lastname: "",
+   age: "",
+   contact: "",
+   submittedData: [],
+   gotAuthor: false,
+   id: ""
+  }
+ }
+ 
+ handleChange = event => {
+  this.setState({
+   [event.target.id]: event.target.value
+  })
+ }
+ 
+ handleSubmit =(event) => {
+  event.preventDefault()
+  const author = {first_name: this.state.firstname, last_name: this.state.lastname, age: this.state.age, contact: this.state.contact}
+  this.createNewAuthor(author)
+ }
+```
+
+```
+ createNewAuthor = (author) => {
+  const configobj = {
+   method: 'POST',
+   body: JSON.stringify(author),
+   headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+   }
+  }
+  fetch('http://localhost:3000/authors',configobj)
+  .then(response => response.json())
+  .then(author => { 
+    this.props.addAuthor(author)
+    this.setState({
+     gotAuthor: true,
+     id: author.id 
+    })
+  })
 }
 ```
 
 ```
-displaySingleAnimal(){
- return (`<h2>Animal Name : "${this.name}"</h2>
- <h4>Phylum : "${this.phylum}"</h4>
- <h4>Order : "${this.order}"</h4>
- <h4>Species : "${this.species}"</h4>
- <h4>Kingdom Name : "${this.kingdom.name}"</h4>
- `)
+render() {
+ return(
+  <div>
+   <form onSubmit={event => this.handleSubmit(event)}>
+   <p>
+    <label>First Name</label>
+    <input type="text" id="firstname" onChange={event => this.handleChange(event)} value={this.state.firstname} required/>
+   </p>
+   <p>
+    <label>Last Name</label>
+    <input type="text" id="lastname" onChange={event => this.handleChange(event)} value={this.state.lastname} required/>
+   </p>
+   {this.state.gotAuthor && (<Redirect to={`/authors/${this.state.id}`}/>)}
+ </div>
+ );
 }
 ```
 
 ```
-def show 
- if @animal 
-  render json: @animal
- else 
-  render json: {status: "error", code:3000, message: "This id does not exist" }
- end 
-end 
+const mapDispatchToProps = dispatch => {
+ return {
+  addAuthor: author => { dispatch(addAuthor(author)) }
+ }
+}
+export default connect(null, mapDispatchToProps)(CreateAuthor);
 ```
 
