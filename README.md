@@ -3,7 +3,7 @@
                                                       
 This project lets a user to create a new kingdom or an animal. After creating, a user can make see all the existing kingdoms or animals with a link. After clicking on a link, the details of a kingdom/animal can be viewed. Updating or deleting an animal option available to the user.
 
-<a href="https://www.youtube.com/watch?v=qN_K-UsMAEo&t=3s">Demo</a>
+<a href="https://www.youtube.com/watch?v=54azoDzOMTc&t=1s">Demo</a>
 
 Table of Contents
 - [Features](#features)
@@ -49,7 +49,7 @@ Table of Contents
 <li> run rails db:create to create a database locally.</li>
 <li> run rails db:migrate to create tables into the database.</li>
 <li> run rails db:seed to create seed data.</li>
-<li> run rails s to run the server.</li>
+<li> run npm start to start the browser.</li>
 </ul>
         
 ## Challenges
