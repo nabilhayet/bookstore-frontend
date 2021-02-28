@@ -34,13 +34,14 @@ Table of Contents
 ## Tech-Stack
 <p>This web app makes use of the following:</p>
 
-* ruby '2.6.1'
-* 'active_model_serializers'
-* 'rails', '~> 6.0.3', '>= 6.0.3.4'
-* 'sqlite3', '~> 1.4'
-* 'puma', '~> 4.1'
-* 'rack-cors'
-* 'byebug'
+* react: "^17.0.1",	
+*	react-dom: "^17.0.1",
+*	react-redux: "^7.2.2",
+*	react-router-dom: "^5.2.0",
+*	react-scripts: "4.0.1",
+*	redux: "^4.0.5",
+*	redux-thunk: "^2.3.0",
+
 
 ## Installing
 <ul>
