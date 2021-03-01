@@ -1,7 +1,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/nabilhayet/Restaurant) ![GitHub forks](https://img.shields.io/github/forks/nabilhayet/Restaurant) ![GitHub followers](https://img.shields.io/github/followers/nabilhayet) ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/nabilhayet/Restaurant)                                          
                                         <h1>:bomb: BookStore :bomb: </h1>
                                                       
-This project lets a user to add a new book or author. After creating, a user can see all the existing authors or books. After clicking on a link, the details of an author/book can be viewed. Updating or deleting an author/book option available to the user.
+This project lets a user add a new book or author. After creating, a user can see all the existing authors or books. After clicking on a link, the details of an author/book can be viewed. Updating or deleting an author/book option available to the user.
 
 <a href="https://www.youtube.com/watch?v=54azoDzOMTc&t=1s">Demo</a>
 <a href="https://github.com/nabilhayet/bookstore-backend">Backend</a>
@@ -54,18 +54,17 @@ Table of Contents
         
 ## Challenges
 <ul>
-<li> Dropdown menu to select a kingdom was not working while creating a new animal in the beginning.</li>
-<li> Once it started to work, the next problem i faced was loading each option twice in dropdown menu</li>
-<li> Converting vanila js to OO js</li>
-<li> I wasn't able to grab the right item while updatting or deleting</li>
+<li> Implementing redux state with react</li>
+<li> Whenever an item was deleted the page wasn't updated automatically</li>
+<li> Accessing the id of an item inside nested url</li>
+<li> Creating the dropdown menu in book component</li>
 </ul>
 
 ## Future-Implementation
 <ul>
 <li> Add bootstrap to make the UI more appealing</li>
-<li> Insert image for each animal</li>
-<li> Refactor code to reduce fetch calls to backend and remove duplicacy of code</li>
-<li> Add filter method </li>
+<li> Insert image for each book</li>
+<li> Add more classes like Genre</li>
 </ul> 
 
 ## Code-Snippet 
